@@ -13,7 +13,7 @@ http://tomcat.apache.org/download-70.cgi[tomcat 7] or http://tomcat.apache.org/d
 
 .Project layout
 -----
-sys::[cd ../tutorial ; git checkout master; git checkout 0e8e135 ; tree -L 5 cq_deployment_war]
+sys::[cd ../tutorial ; git checkout master; git checkout 0e8e135 ; tree -a -L 5 cq_deployment_war]
 -----
 
 

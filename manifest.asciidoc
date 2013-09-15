@@ -7,4 +7,6 @@ include::installation.asciidoc[]
 
 include::admin.asciidoc[]
 
+include::simple_site.asciidoc[]
+
 
