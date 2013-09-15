@@ -1,0 +1,20 @@
+== Admin Screen
+Once you access the running cq install and logged in you will be greeted with the following
+
+.Admin Screen
+image:images/Welcome_to_Adobe_CQ5.png["Admin Screen",width=250,link="book_contents/images/Welcome_to_Adobe_CQ5.png"]
+
+=== Site Admin
+NOTE: TODO
+
+=== Users
+NOTE: TODO
+
+=== Tools
+NOTE: TODO
+
+=== Packages
+NOTE: TODO
+
+=== OSGI Console
+NOTE: TODO
