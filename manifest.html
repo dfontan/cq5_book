@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="AsciiDoc 8.6.8">
+<title>CQ 5.5 Installation Development &amp; Best Practices</title>
+<style type="text/css">
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: Georgia,serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+.monospaced, code, pre {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+  padding: 0;
+  margin: 0;
+}
+
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+
+
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install(2);
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+<h1>CQ 5.5 Installation Development &amp; Best Practices</h1>
+<div id="toc">
+  <div id="toctitle">Table of Contents</div>
+  <noscript><p><b>JavaScript must be enabled in your browser to display the table of contents.</b></p></noscript>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_installation">1. Installation</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_quickstart">1.1. Quickstart</h3>
+<div class="paragraph"><p>CQ is available as an executable jar known as <a href="http://adobe.com">quickstart</a></p></div>
+</div>
+<div class="sect2">
+<h3 id="_java_web_war_deployment">1.2. Java Web War Deployment</h3>
+<div class="paragraph"><p>CQ5.5 is available as a war distribution which you can configure inside of j2ee container environment.</p></div>
+<div class="paragraph"><p>I will be running it inside of <a href="http://tomcat.apache.org/download-60.cgi">tomcat 6</a>, you can try and follow along and deploy to
+<a href="http://tomcat.apache.org/download-70.cgi">tomcat 7</a> or <a href="http://tomcat.apache.org/download-80.cgi">tomcat 8</a></p></div>
+<div class="listingblock">
+<div class="title">Project layout</div>
+<div class="content monospaced">
+<pre>cq_deployment_war
+├── cq_deployment_war.iml
+├── license.properties
+├── pom.xml
+├── sling-home
+├── src
+│   └── main
+│       └── webapp
+│           ├── META-INF
+│           │   ├── LICENSE
+│           │   ├── MANIFEST.MF
+│           │   └── maven
+│           ├── WEB-INF
+│           │   ├── classes
+│           │   ├── resources
+│           │   └── web.xml
+│           └── some_random.jsp
+└── target
+    ├── cq_deployment_war-1.0-SNAPSHOT
+    │   └── WEB-INF
+    │       └── web.xml
+    └── cq_deployment_war-1.0-SNAPSHOT.war
+
+12 directories, 9 files</pre>
+</div></div>
+<div class="listingblock">
+<div class="title">cq_deployment_war/pom.xml</div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.7
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="color: #000000">    1:</span> <span style="font-weight: bold"><span style="color: #000080">&lt;?xml</span></span> <span style="color: #009900">version</span><span style="color: #990000">=</span><span style="color: #FF0000">"1.0"</span> <span style="color: #009900">encoding</span><span style="color: #990000">=</span><span style="color: #FF0000">"UTF-8"</span><span style="font-weight: bold"><span style="color: #000080">?&gt;</span></span>
+<span style="color: #000000">    2:</span> <span style="font-weight: bold"><span style="color: #0000FF">&lt;project</span></span> <span style="color: #009900">xmlns</span><span style="color: #990000">=</span><span style="color: #FF0000">"http://maven.apache.org/POM/4.0.0"</span>
+<span style="color: #000000">    3:</span>          <span style="color: #009900">xmlns:xsi</span><span style="color: #990000">=</span><span style="color: #FF0000">"http://www.w3.org/2001/XMLSchema-instance"</span>
+<span style="color: #000000">    4:</span>          <span style="color: #009900">xsi:schemaLocation</span><span style="color: #990000">=</span><span style="color: #FF0000">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span><span style="font-weight: bold"><span style="color: #0000FF">&gt;</span></span>
+<span style="color: #000000">    5:</span>     <span style="font-weight: bold"><span style="color: #0000FF">&lt;modelVersion&gt;</span></span>4.0.0<span style="font-weight: bold"><span style="color: #0000FF">&lt;/modelVersion&gt;</span></span>
+<span style="color: #000000">    6:</span>
+<span style="color: #000000">    7:</span>     <span style="font-weight: bold"><span style="color: #0000FF">&lt;parent&gt;</span></span>
+<span style="color: #000000">    8:</span>         <span style="font-weight: bold"><span style="color: #0000FF">&lt;groupId&gt;</span></span>tutorial<span style="font-weight: bold"><span style="color: #0000FF">&lt;/groupId&gt;</span></span>
+<span style="color: #000000">    9:</span>         <span style="font-weight: bold"><span style="color: #0000FF">&lt;artifactId&gt;</span></span>tutorial<span style="font-weight: bold"><span style="color: #0000FF">&lt;/artifactId&gt;</span></span>
+<span style="color: #000000">   10:</span>         <span style="font-weight: bold"><span style="color: #0000FF">&lt;version&gt;</span></span>1.0-SNAPSHOT<span style="font-weight: bold"><span style="color: #0000FF">&lt;/version&gt;</span></span>
+<span style="color: #000000">   11:</span>         <span style="font-weight: bold"><span style="color: #0000FF">&lt;relativePath&gt;</span></span>../pom.xml<span style="font-weight: bold"><span style="color: #0000FF">&lt;/relativePath&gt;</span></span>
+<span style="color: #000000">   12:</span>     <span style="font-weight: bold"><span style="color: #0000FF">&lt;/parent&gt;</span></span>
+<span style="color: #000000">   13:</span>
+<span style="color: #000000">   14:</span>     <span style="font-weight: bold"><span style="color: #0000FF">&lt;artifactId&gt;</span></span>cq_deployment_war<span style="font-weight: bold"><span style="color: #0000FF">&lt;/artifactId&gt;</span></span>
+<span style="color: #000000">   15:</span>     <span style="font-weight: bold"><span style="color: #0000FF">&lt;packaging&gt;</span></span>war<span style="font-weight: bold"><span style="color: #0000FF">&lt;/packaging&gt;</span></span>
+<span style="color: #000000">   16:</span>
+<span style="color: #000000">   17:</span>
+<span style="color: #000000">   18:</span> <span style="font-weight: bold"><span style="color: #0000FF">&lt;/project&gt;</span></span></tt></pre></div></div>
+<div class="paragraph"><p>So i&#8217;ve created a directory <strong>cq_war_deployment</strong> and extracted the contents of the cq war here.</p></div>
+<div class="paragraph"><p>To get tomcat / cq configured we have to modify some settings inside of the web.xml file, I am not going to show how
+to get tomcat configured to use the cq_war_development folder as root webapplication I will leave this as a user
+exercise</p></div>
+<div class="paragraph"><p>Once you have you have extracted the war you need to modify Inside of <strong>web.xml</strong> you should see</p></div>
+<div class="listingblock">
+<div class="title">web.xml</div>
+<div class="content"><!-- Generator: GNU source-highlight 3.1.7
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="color: #000000">    1:</span> <span style="font-weight: bold"><span style="color: #000080">&lt;?xml</span></span> <span style="color: #009900">version</span><span style="color: #990000">=</span><span style="color: #FF0000">"1.0"</span> <span style="color: #009900">encoding</span><span style="color: #990000">=</span><span style="color: #FF0000">"UTF-8"</span><span style="font-weight: bold"><span style="color: #000080">?&gt;</span></span>
+<span style="color: #000000">    2:</span> <span style="font-style: italic"><span style="color: #9A1900">&lt;!--</span></span>
+<span style="color: #000000">    3:</span> <span style="font-style: italic"><span style="color: #9A1900">/*************************************************************************</span></span>
+<span style="color: #000000">    4:</span> <span style="font-style: italic"><span style="color: #9A1900"> *</span></span>
+<span style="color: #000000">    5:</span> <span style="font-style: italic"><span style="color: #9A1900"> * ADOBE CONFIDENTIAL</span></span>
+<span style="color: #000000">    6:</span> <span style="font-style: italic"><span style="color: #9A1900"> * __________________</span></span>
+<span style="color: #000000">    7:</span> <span style="font-style: italic"><span style="color: #9A1900"> *</span></span>
+<span style="color: #000000">    8:</span> <span style="font-style: italic"><span style="color: #9A1900"> *  Copyright 2011 Adobe Systems Incorporated</span></span>
+<span style="color: #000000">    9:</span> <span style="font-style: italic"><span style="color: #9A1900"> *  All Rights Reserved.</span></span>
+<span style="color: #000000">   10:</span> <span style="font-style: italic"><span style="color: #9A1900"> *</span></span>
+<span style="color: #000000">   11:</span> <span style="font-style: italic"><span style="color: #9A1900"> * NOTICE:  All information contained herein is, and remains</span></span>
+<span style="color: #000000">   12:</span> <span style="font-style: italic"><span style="color: #9A1900"> * the property of Adobe Systems Incorporated and its suppliers,</span></span>
+<span style="color: #000000">   13:</span> <span style="font-style: italic"><span style="color: #9A1900"> * if any.  The intellectual and technical concepts contained</span></span>
+<span style="color: #000000">   14:</span> <span style="font-style: italic"><span style="color: #9A1900"> * herein are proprietary to Adobe Systems Incorporated and its</span></span>
+<span style="color: #000000">   15:</span> <span style="font-style: italic"><span style="color: #9A1900"> * suppliers and are protected by trade secret or copyright law.</span></span>
+<span style="color: #000000">   16:</span> <span style="font-style: italic"><span style="color: #9A1900"> * Dissemination of this information or reproduction of this material</span></span>
+<span style="color: #000000">   17:</span> <span style="font-style: italic"><span style="color: #9A1900"> * is strictly forbidden unless prior written permission is obtained</span></span>
+<span style="color: #000000">   18:</span> <span style="font-style: italic"><span style="color: #9A1900"> * from Adobe Systems Incorporated.</span></span>
+<span style="color: #000000">   19:</span> <span style="font-style: italic"><span style="color: #9A1900"> **************************************************************************/</span></span>
+<span style="color: #000000">   20:</span> <span style="font-style: italic"><span style="color: #9A1900">--&gt;</span></span>
+<span style="color: #000000">   21:</span> <span style="font-weight: bold"><span style="color: #0000FF">&lt;web-app</span></span> <span style="color: #009900">version</span><span style="color: #990000">=</span><span style="color: #FF0000">"2.4"</span>
+<span style="color: #000000">   22:</span>          <span style="color: #009900">xmlns</span><span style="color: #990000">=</span><span style="color: #FF0000">"http://java.sun.com/xml/ns/j2ee"</span>
+<span style="color: #000000">   23:</span>          <span style="color: #009900">xmlns:xsi</span><span style="color: #990000">=</span><span style="color: #FF0000">"http://www.w3.org/2001/XMLSchema-instance"</span>
+<span style="color: #000000">   24:</span>          <span style="color: #009900">xsi:schemaLocation</span><span style="color: #990000">=</span><span style="color: #FF0000">"http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"</span><span style="font-weight: bold"><span style="color: #0000FF">&gt;</span></span>
+<span style="color: #000000">   25:</span>     <span style="font-weight: bold"><span style="color: #0000FF">&lt;display-name&gt;</span></span>Adobe Granite Web Application<span style="font-weight: bold"><span style="color: #0000FF">&lt;/display-name&gt;</span></span>
+<span style="color: #000000">   26:</span>
+<span style="color: #000000">   27:</span>     <span style="font-style: italic"><span style="color: #9A1900">&lt;!-- The Felix Http Service Listener Proxy for HTTP Session events --&gt;</span></span>
+<span style="color: #000000">   28:</span>     <span style="font-weight: bold"><span style="color: #0000FF">&lt;listener&gt;</span></span>
+<span style="color: #000000">   29:</span>         <span style="font-weight: bold"><span style="color: #0000FF">&lt;listener-class&gt;</span></span>
+<span style="color: #000000">   30:</span>             org.apache.sling.launchpad.webapp.SlingSessionListener
+<span style="color: #000000">   31:</span>         <span style="font-weight: bold"><span style="color: #0000FF">&lt;/listener-class&gt;</span></span>
+<span style="color: #000000">   32:</span>     <span style="font-weight: bold"><span style="color: #0000FF">&lt;/listener&gt;</span></span>
+<span style="color: #000000">   33:</span>
+<span style="color: #000000">   34:</span>     <span style="font-weight: bold"><span style="color: #0000FF">&lt;servlet&gt;</span></span>
+<span style="color: #000000">   35:</span>         <span style="font-weight: bold"><span style="color: #0000FF">&lt;display-name&gt;</span></span>Granite Servlet<span style="font-weight: bold"><span style="color: #0000FF">&lt;/display-name&gt;</span></span>
+<span style="color: #000000">   36:</span>         <span style="font-weight: bold"><span style="color: #0000FF">&lt;servlet-name&gt;</span></span>granite<span style="font-weight: bold"><span style="color: #0000FF">&lt;/servlet-name&gt;</span></span>
+<span style="color: #000000">   37:</span>         <span style="font-weight: bold"><span style="color: #0000FF">&lt;servlet-class&gt;</span></span>
+<span style="color: #000000">   38:</span>             org.apache.sling.launchpad.webapp.SlingServlet
+<span style="color: #000000">   39:</span>         <span style="font-weight: bold"><span style="color: #0000FF">&lt;/servlet-class&gt;</span></span>
+<span style="color: #000000">   40:</span>
+<span style="color: #000000">   41:</span>         <span style="font-style: italic"><span style="color: #9A1900">&lt;!--</span></span>
+<span style="color: #000000">   42:</span> <span style="font-style: italic"><span style="color: #9A1900">                Any init-params defined for the servlet will overwrite</span></span>
+<span style="color: #000000">   43:</span> <span style="font-style: italic"><span style="color: #9A1900">            the default settings in the sling.properties file.</span></span>
+<span style="color: #000000">   44:</span>
+<span style="color: #000000">   45:</span> <span style="font-style: italic"><span style="color: #9A1900">            The most important init-param to be set here is the</span></span>
+<span style="color: #000000">   46:</span> <span style="font-style: italic"><span style="color: #9A1900">            sling.home parameter defining where Sling will place</span></span>
+<span style="color: #000000">   47:</span> <span style="font-style: italic"><span style="color: #9A1900">            its files such as the bundle cache, logs, configuration,</span></span>
+<span style="color: #000000">   48:</span> <span style="font-style: italic"><span style="color: #9A1900">            etc.</span></span>
+<span style="color: #000000">   49:</span>
+<span style="color: #000000">   50:</span> <span style="font-style: italic"><span style="color: #9A1900">            If the sling.home parameter is not set a default value is</span></span>
+<span style="color: #000000">   51:</span> <span style="font-style: italic"><span style="color: #9A1900">            set as ${user.dir}/sling/${context.path} where ${user.dir}</span></span>
+<span style="color: #000000">   52:</span> <span style="font-style: italic"><span style="color: #9A1900">            is the current working directory and ${context.path} is the</span></span>
+<span style="color: #000000">   53:</span> <span style="font-style: italic"><span style="color: #9A1900">            servlet context path with slashes replaced by underscores and</span></span>
+<span style="color: #000000">   54:</span> <span style="font-style: italic"><span style="color: #9A1900">            the root context represented as just a single underscore.</span></span>
+<span style="color: #000000">   55:</span>
+<span style="color: #000000">   56:</span> <span style="font-style: italic"><span style="color: #9A1900">            Example: For Sling deployed in the root context, the default</span></span>
+<span style="color: #000000">   57:</span> <span style="font-style: italic"><span style="color: #9A1900">            sling.home would be sling/_. For Sling deployed in the context</span></span>
+<span style="color: #000000">   58:</span> <span style="font-style: italic"><span style="color: #9A1900">            /sling/i1, the default sling.home would be sling/_sling_i1.</span></span>
+<span style="color: #000000">   59:</span> <span style="font-style: italic"><span style="color: #9A1900">        --&gt;</span></span>
+<span style="color: #000000">   60:</span>         <span style="font-weight: bold"><span style="color: #0000FF">&lt;init-param&gt;</span></span>
+<span style="color: #000000">   61:</span>                 <span style="font-weight: bold"><span style="color: #0000FF">&lt;param-name&gt;</span></span>sling.home<span style="font-weight: bold"><span style="color: #0000FF">&lt;/param-name&gt;</span></span>
+<span style="color: #000000">   62:</span>                 <span style="font-weight: bold"><span style="color: #0000FF">&lt;param-value&gt;</span></span>/Users/ssmithstone/cq_tutorial/tutorial/cq_deployment_war/sling-home<span style="font-weight: bold"><span style="color: #0000FF">&lt;/param-value&gt;</span></span> <span style="font-style: italic"><span style="color: #9A1900">&lt;!-- <img src="/usr/local/Cellar/asciidoc/8.6.8/etc/asciidoc/images/icons/callouts/1.png" alt="1"> --&gt;</span></span>
+<span style="color: #000000">   63:</span>         <span style="font-weight: bold"><span style="color: #0000FF">&lt;/init-param&gt;</span></span>
+<span style="color: #000000">   64:</span>       <span style="font-style: italic"><span style="color: #9A1900">&lt;!--</span></span>
+<span style="color: #000000">   65:</span> <span style="font-style: italic"><span style="color: #9A1900">            The launchpad folder is created relative to the sling.home</span></span>
+<span style="color: #000000">   66:</span> <span style="font-style: italic"><span style="color: #9A1900">            folder.</span></span>
+<span style="color: #000000">   67:</span> <span style="font-style: italic"><span style="color: #9A1900">       --&gt;</span></span>
+<span style="color: #000000">   68:</span>         <span style="font-weight: bold"><span style="color: #0000FF">&lt;init-param&gt;</span></span>
+<span style="color: #000000">   69:</span>             <span style="font-weight: bold"><span style="color: #0000FF">&lt;param-name&gt;</span></span>sling.launchpad<span style="font-weight: bold"><span style="color: #0000FF">&lt;/param-name&gt;</span></span>
+<span style="color: #000000">   70:</span>             <span style="font-weight: bold"><span style="color: #0000FF">&lt;param-value&gt;</span></span>launchpad<span style="font-weight: bold"><span style="color: #0000FF">&lt;/param-value&gt;</span></span>
+<span style="color: #000000">   71:</span>         <span style="font-weight: bold"><span style="color: #0000FF">&lt;/init-param&gt;</span></span>
+<span style="color: #000000">   72:</span>       <span style="font-style: italic"><span style="color: #9A1900">&lt;!--</span></span>
+<span style="color: #000000">   73:</span> <span style="font-style: italic"><span style="color: #9A1900">            The sling propreties are resolved relative to the</span></span>
+<span style="color: #000000">   74:</span> <span style="font-style: italic"><span style="color: #9A1900">            sling.home folder.</span></span>
+<span style="color: #000000">   75:</span> <span style="font-style: italic"><span style="color: #9A1900">       --&gt;</span></span>
+<span style="color: #000000">   76:</span>         <span style="font-weight: bold"><span style="color: #0000FF">&lt;init-param&gt;</span></span>
+<span style="color: #000000">   77:</span>             <span style="font-weight: bold"><span style="color: #0000FF">&lt;param-name&gt;</span></span>sling.properties<span style="font-weight: bold"><span style="color: #0000FF">&lt;/param-name&gt;</span></span>
+<span style="color: #000000">   78:</span>             <span style="font-weight: bold"><span style="color: #0000FF">&lt;param-value&gt;</span></span>launchpad/sling.properties<span style="font-weight: bold"><span style="color: #0000FF">&lt;/param-value&gt;</span></span>
+<span style="color: #000000">   79:</span>         <span style="font-weight: bold"><span style="color: #0000FF">&lt;/init-param&gt;</span></span>
+<span style="color: #000000">   80:</span>
+<span style="color: #000000">   81:</span>       <span style="font-style: italic"><span style="color: #9A1900">&lt;!-- Set the runmode per default to author --&gt;</span></span>
+<span style="color: #000000">   82:</span>         <span style="font-weight: bold"><span style="color: #0000FF">&lt;init-param&gt;</span></span>
+<span style="color: #000000">   83:</span>             <span style="font-weight: bold"><span style="color: #0000FF">&lt;param-name&gt;</span></span>sling.run.modes<span style="font-weight: bold"><span style="color: #0000FF">&lt;/param-name&gt;</span></span>
+<span style="color: #000000">   84:</span>             <span style="font-weight: bold"><span style="color: #0000FF">&lt;param-value&gt;</span></span>author<span style="font-weight: bold"><span style="color: #0000FF">&lt;/param-value&gt;</span></span>
+<span style="color: #000000">   85:</span>         <span style="font-weight: bold"><span style="color: #0000FF">&lt;/init-param&gt;</span></span>
+<span style="color: #000000">   86:</span>         <span style="font-weight: bold"><span style="color: #0000FF">&lt;load-on-startup&gt;</span></span>100<span style="font-weight: bold"><span style="color: #0000FF">&lt;/load-on-startup&gt;</span></span>
+<span style="color: #000000">   87:</span>     <span style="font-weight: bold"><span style="color: #0000FF">&lt;/servlet&gt;</span></span>
+<span style="color: #000000">   88:</span>
+<span style="color: #000000">   89:</span>     <span style="font-style: italic"><span style="color: #9A1900">&lt;!-- Default Mapping for the Context --&gt;</span></span>
+<span style="color: #000000">   90:</span>     <span style="font-weight: bold"><span style="color: #0000FF">&lt;servlet-mapping&gt;</span></span>
+<span style="color: #000000">   91:</span>         <span style="font-weight: bold"><span style="color: #0000FF">&lt;servlet-name&gt;</span></span>granite<span style="font-weight: bold"><span style="color: #0000FF">&lt;/servlet-name&gt;</span></span>
+<span style="color: #000000">   92:</span>         <span style="font-weight: bold"><span style="color: #0000FF">&lt;url-pattern&gt;</span></span>/*<span style="font-weight: bold"><span style="color: #0000FF">&lt;/url-pattern&gt;</span></span>
+<span style="color: #000000">   93:</span>     <span style="font-weight: bold"><span style="color: #0000FF">&lt;/servlet-mapping&gt;</span></span>
+<span style="color: #000000">   94:</span>
+<span style="color: #000000">   95:</span>     <span style="font-style: italic"><span style="color: #9A1900">&lt;!-- Overwrite Mappings which may be present in default web.xml files --&gt;</span></span>
+<span style="color: #000000">   96:</span>     <span style="font-weight: bold"><span style="color: #0000FF">&lt;servlet-mapping&gt;</span></span>
+<span style="color: #000000">   97:</span>         <span style="font-weight: bold"><span style="color: #0000FF">&lt;servlet-name&gt;</span></span>granite<span style="font-weight: bold"><span style="color: #0000FF">&lt;/servlet-name&gt;</span></span>
+<span style="color: #000000">   98:</span>         <span style="font-weight: bold"><span style="color: #0000FF">&lt;url-pattern&gt;</span></span>*.jsp<span style="font-weight: bold"><span style="color: #0000FF">&lt;/url-pattern&gt;</span></span>
+<span style="color: #000000">   99:</span>     <span style="font-weight: bold"><span style="color: #0000FF">&lt;/servlet-mapping&gt;</span></span>
+<span style="color: #000000">  100:</span>
+<span style="color: #000000">  101:</span> <span style="font-weight: bold"><span style="color: #0000FF">&lt;/web-app&gt;</span></span></tt></pre></div></div>
+<div class="colist arabic"><table>
+<tr><td><img src="/usr/local/Cellar/asciidoc/8.6.8/etc/asciidoc/images/icons/callouts/1.png" alt="1"></td><td>
+We have alter the sling-home init param to point to the deployment path
+</td></tr>
+</table></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>cq_deployment_war/sling-home</pre>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2013-09-15 10:14:54 BST
+</div>
+</div>
+</body>
+</html>
