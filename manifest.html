@@ -831,20 +831,38 @@ asciidoc.install(2);
 │           │   └── data
 │           └── bundle40
 │               └── data
-└── src
-    └── main
-        └── webapp
-            ├── META-INF
-            │   ├── LICENSE
-            │   ├── MANIFEST.MF
-            │   └── maven
-            ├── WEB-INF
-            │   ├── classes
-            │   ├── resources
-            │   └── web.xml
-            └── some_random.jsp
+├── src
+│   └── main
+│       └── webapp
+│           ├── META-INF
+│           │   ├── LICENSE
+│           │   ├── MANIFEST.MF
+│           │   └── maven
+│           ├── WEB-INF
+│           │   ├── classes
+│           │   ├── resources
+│           │   └── web.xml
+│           └── some_random.jsp
+└── target
+    └── cq_deployment_war-1.0-SNAPSHOT
+        ├── META-INF
+        │   ├── LICENSE
+        │   ├── MANIFEST.MF
+        │   └── maven
+        │       └── com.day.cq
+        ├── WEB-INF
+        │   ├── classes
+        │   │   ├── com
+        │   │   └── org
+        │   ├── resources
+        │   │   ├── bundles
+        │   │   ├── config
+        │   │   ├── install
+        │   │   └── org.apache.sling.launchpad.base.jar
+        │   └── web.xml
+        └── some_random.jsp
 
-15 directories, 8 files</code></pre>
+28 directories, 13 files</code></pre>
 </div></div>
 <div class="listingblock">
 <div class="title">cq_deployment_war/pom.xml</div>
@@ -1187,42 +1205,75 @@ We have alter the sling-home init param to point to the deployment path
 <pre><code>global-cq-content
 ├── global-cq-content.iml
 ├── pom.xml
-└── src
-    └── main
-        └── resources
-            ├── META-INF
-            │   └── vault
-            │       ├── config.xml
-            │       ├── filter.xml
-            │       ├── nodetypes.cnd
-            │       ├── properties.xml
-            │       └── settings.xml
-            └── jcr_root
-                ├── apps
-                │   └── smithstone
-                │       ├── components
-                │       │   └── page
-                │       │       └── homepage
-                │       │           ├── .content.xml
-                │       │           └── homepage.jsp
-                │       └── templates
-                │           └── homepage
-                │               ├── .content.xml
-                │               └── thumbnail.png
-                └── etc
-                    ├── blueprints
-                    │   └── smithstone
-                    │       ├── .content.xml
-                    │       └── _jcr_content
-                    │           └── dialog.xml
-                    └── designs
-                        └── smithstone
-                            ├── .content.xml
-                            ├── images
-                            ├── scripts
-                            └── styles
+├── src
+│   └── main
+│       └── resources
+│           ├── META-INF
+│           │   └── vault
+│           │       ├── config.xml
+│           │       ├── filter.xml
+│           │       ├── nodetypes.cnd
+│           │       ├── properties.xml
+│           │       └── settings.xml
+│           └── jcr_root
+│               ├── apps
+│               │   └── smithstone
+│               │       ├── components
+│               │       │   └── page
+│               │       │       └── homepage
+│               │       │           ├── .content.xml
+│               │       │           └── homepage.jsp
+│               │       └── templates
+│               │           └── homepage
+│               │               ├── .content.xml
+│               │               └── thumbnail.png
+│               └── etc
+│                   ├── blueprints
+│                   │   └── smithstone
+│                   │       ├── .content.xml
+│                   │       └── _jcr_content
+│                   │           └── dialog.xml
+│                   └── designs
+│                       └── smithstone
+│                           ├── .content.xml
+│                           ├── images
+│                           ├── scripts
+│                           └── styles
+└── target
+    ├── classes
+    │   ├── META-INF
+    │   │   └── vault
+    │   │       ├── config.xml
+    │   │       ├── filter.xml
+    │   │       ├── nodetypes.cnd
+    │   │       ├── properties.xml
+    │   │       └── settings.xml
+    │   └── jcr_root
+    │       ├── apps
+    │       │   └── smithstone
+    │       │       ├── components
+    │       │       │   └── page
+    │       │       │       └── homepage
+    │       │       │           ├── .content.xml
+    │       │       │           └── homepage.jsp
+    │       │       └── templates
+    │       │           └── homepage
+    │       │               ├── .content.xml
+    │       │               └── thumbnail.png
+    │       └── etc
+    │           ├── blueprints
+    │           │   └── smithstone
+    │           │       ├── .content.xml
+    │           │       └── _jcr_content
+    │           │           └── dialog.xml
+    │           └── designs
+    │               └── smithstone
+    │                   └── .content.xml
+    ├── global-cq-content-1.0-SNAPSHOT.jar
+    └── maven-archiver
+        └── pom.properties
 
-22 directories, 14 files</code></pre>
+41 directories, 28 files</code></pre>
 </div></div>
 <div class="admonitionblock">
 <table><tr>
@@ -1575,6 +1626,85 @@ Includes the necessary files for CQ resources
 Includes the necessary file for CQ initialisation for editor mode
 </td></tr>
 </table></div>
+<div class="paragraph"><p>CQ resources
+When we include the cq taglib we are given a collection of CQ objects</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+slingRequest - The wrapped Request Object (SlingHttpServletRequest).
+</p>
+</li>
+<li>
+<p>
+slingResponse - The wrapped Response Object (SlingHttpServletResponse).
+</p>
+</li>
+<li>
+<p>
+resource - The Sling Resource Object (slingRequest.getResource();).
+</p>
+</li>
+<li>
+<p>
+resourceResolver - The Sling Resource Resolver Object (slingRequest.getResoucreResolver();).
+</p>
+</li>
+<li>
+<p>
+currentNode - The resolved JCR node for the request.
+</p>
+</li>
+<li>
+<p>
+log - The Default logger ().
+</p>
+</li>
+<li>
+<p>
+sling - The Sling script helper.
+</p>
+</li>
+<li>
+<p>
+properties - The properties of the addressed resource (resource.adaptTo(ValueMap.class);).
+</p>
+</li>
+<li>
+<p>
+pageProperties - The properties of the page of the addressed resource.
+</p>
+</li>
+<li>
+<p>
+pageManager - The page manager for accessing CQ content pages (resourceResolver.adaptTo(PageManager.class);).
+</p>
+</li>
+<li>
+<p>
+component - The component object of the current CQ5 component..
+</p>
+</li>
+<li>
+<p>
+designer - The designer object for retrieving design information (resourceResolver.adaptTo(Designer.class);).
+</p>
+</li>
+<li>
+<p>
+currentDesign - The design of the addressed resource.
+</p>
+</li>
+<li>
+<p>
+currentStyle - The style of the addressed resource.
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>these are all available on the page context these objects make up the resource you are viewing via the url.  The problem with these objects is that they are not JSTL friendly and you are to populate the view with code that looks like the folowing:</p></div>
+<div class="listingblock">
+<div class="content"><div class="highlight"><pre><span class="nt">&lt;c:set</span> <span class="na">var=</span><span class="s">&quot;some_var&quot;</span> <span class="na">value=</span><span class="s">&quot;</span><span class="k">&lt;%=</span><span class="n">properties</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="err">&#39;</span><span class="n">property_name</span><span class="err">&#39;</span><span class="o">,</span> <span class="n">String</span><span class="o">.</span><span class="na">class</span><span class="o">)</span><span class="k">%&gt;</span><span class="s">&quot;</span><span class="nt">/&gt;</span>
+</pre></div></div></div>
+<div class="paragraph"><p>And as we know this is bad practice and should be avoided, however this is littered everywhere in Adobe best practices.  This kind of code in the view makes it near impossible to test the view code, as we now have vendor lockin.</p></div>
 <div class="listingblock">
 <div class="title">apps/smithstone/components/page/homepage/.content.xml</div>
 <div class="content"><div class="highlight"><pre><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
@@ -1666,6 +1796,7 @@ nothing in there at the minute.</p></div>
 [INFO] ------------------------------------------------------------------------
 [INFO]
 [INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ global-cq-content ---
+[INFO] Deleting /Users/ssmithstone/cq_tutorial/tutorial/global-cq-content/target
 [INFO]
 [INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ global-cq-content ---
 [WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
@@ -1689,9 +1820,9 @@ nothing in there at the minute.</p></div>
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time: 2.652s
-[INFO] Finished at: Sun Sep 15 11:47:35 BST 2013
-[INFO] Final Memory: 8M/129M
+[INFO] Total time: 1.752s
+[INFO] Finished at: Wed Oct 02 08:18:58 BST 2013
+[INFO] Final Memory: 6M/16M
 [INFO] ------------------------------------------------------------------------</code></pre>
 </div></div>
 <div class="paragraph"><p>To upload the jar to cq run the maven plugin from inside globa-cq-content directory</p></div>
@@ -1766,7 +1897,9 @@ We have used the cq currentPage object to get access to the title
 <div class="sect2">
 <h3 id="_summary">3.3. Summary</h3>
 <div class="paragraph"><p>We have created a simple template and used that template as a base for some files, we&#8217;ve added the title to each page using the
-exposed CQ objects, not a complex introduction into CQ development.</p></div>
+exposed CQ objects.
+This is simple introduction in CQ development that has highlighted some bad practices with what is the normal way to create CQ components.
+In the upcoming chapters we are going to show how to develop cleaner components.</p></div>
 </div>
 </div>
 </div>

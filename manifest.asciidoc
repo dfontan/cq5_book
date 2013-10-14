@@ -9,4 +9,9 @@ include::admin.asciidoc[]
 
 include::simple_site.asciidoc[]
 
+include::advanced_site.asciidoc[]
+
+include::best_practices.asiidoc[]
+
+include::automated_testing.asciidoc[]
 

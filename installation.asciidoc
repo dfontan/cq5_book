@@ -2,23 +2,22 @@
 
 === Quickstart
 
-CQ is available as an executable jar known as http://adobe.com[quickstart]
+CQ is available as an executable jar known as http://adobe.com[quickstart].
 
 === Java Web War Deployment
 
 CQ5.5 is available as a war distribution which you can configure inside of j2ee container environment.
 
 I will be running it inside of http://tomcat.apache.org/download-60.cgi[tomcat 6], you can try and follow along and deploy to
-http://tomcat.apache.org/download-70.cgi[tomcat 7] or http://tomcat.apache.org/download-80.cgi[tomcat 8]
+either http://tomcat.apache.org/download-70.cgi[tomcat 7] or http://tomcat.apache.org/download-80.cgi[tomcat 8]
 
 .Project layout
 -----
 sys::[cd ../tutorial ; git checkout master; git checkout 0e8e135 ; tree -a -L 5 cq_deployment_war]
 -----
 
-
 .cq_deployment_war/pom.xml
-[source,xml,numbered]
+[source,xml]
 -----
 sys::[cd ../tutorial ; git checkout master ;git checkout fce1ee ; git show HEAD:cq_deployment_war/pom.xml]
 -----
@@ -32,7 +31,7 @@ exercise
 Once you have you have extracted the war you need to modify Inside of *web.xml* you should see
 
 .web.xml
-[source,xml,numbered]
+[source,xml]
 ---------
 sys::[cd ../tutorial ; git checkout master ; git show b32b766:cq_deployment_war/src/main/webapp/WEB-INF/web.xml]
 ---------

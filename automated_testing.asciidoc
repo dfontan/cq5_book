@@ -1,0 +1,8 @@
+include::view_test.asciidoc[]
+
+include::jsp_tags.asciidoc[]
+
+include::html_views.asciidoc[]
+
+include::javascript_test.asciidoc[]
+

@@ -61,11 +61,39 @@ sys::[cd ../tutorial ; git checkout master ; git show 74ae45e:global-cq-content/
 <1> Includes the necessary files for CQ resources
 <2> Includes the necessary file for CQ initialisation for editor mode
 
+CQ resources
+When we include the cq taglib we are given a collection of CQ objects
+
+- slingRequest - The wrapped Request Object (SlingHttpServletRequest).
+- slingResponse - The wrapped Response Object (SlingHttpServletResponse).
+- resource - The Sling Resource Object (slingRequest.getResource();).
+- resourceResolver - The Sling Resource Resolver Object (slingRequest.getResoucreResolver();).
+- currentNode - The resolved JCR node for the request.
+- log - The Default logger ().
+- sling - The Sling script helper.
+- properties - The properties of the addressed resource (resource.adaptTo(ValueMap.class);).
+- pageProperties - The properties of the page of the addressed resource. 
+- pageManager - The page manager for accessing CQ content pages (resourceResolver.adaptTo(PageManager.class);).
+- component - The component object of the current CQ5 component.. 
+- designer - The designer object for retrieving design information (resourceResolver.adaptTo(Designer.class);). 
+- currentDesign - The design of the addressed resource.
+- currentStyle - The style of the addressed resource.
+
+these are all available on the page context these objects make up the resource you are viewing via the url.  The problem with these objects is that they are not JSTL friendly and you are to populate the view with code that looks like the folowing:
+
+[source,jsp]
+----
+<c:set var="some_var" value="<%=properties.get('property_name', String.class)%>"/>
+----
+
+And as we know this is bad practice and should be avoided, however this is littered everywhere in Adobe best practices.  This kind of code in the view makes it near impossible to test the view code, as we now have vendor lockin.
+
 .apps/smithstone/components/page/homepage/.content.xml
 [source,xml]
 ------------------
 sys::[cd ../tutorial ; git checkout master ; git show 74ae45e:global-cq-content/src/main/resources/jcr_root/apps/smithstone/components/page/homepage/.content.xml]
 ------------------
+
 NOTE: Figure out what this file does
 
 ------------------
@@ -88,10 +116,13 @@ nothing in there at the minute.
 
 
 Once we have all these files we are ready to package up and install into the CQ instance this can be done using maven
+
 -------------------
 sys::[cd ../tutorial/global-cq-content ; git checkout 74ae45e ; mvn clean package]
 -------------------
+
 To upload the jar to cq run the maven plugin from inside globa-cq-content directory
+
 ----
 mvn crx:install -Dcrx.packageFileName=target/global-cq-content-1.0-SNAPSHOT.jar
 ----
@@ -114,4 +145,6 @@ sys::[cd ../tutorial; git checkout master ; git show 0ace70c:global-cq-content/s
 
 === Summary
 We have created a simple template and used that template as a base for some files, we've added the title to each page using the
-exposed CQ objects, not a complex introduction into CQ development.
+exposed CQ objects.
+This is simple introduction in CQ development that has highlighted some bad practices with what is the normal way to create CQ components.
+In the upcoming chapters we are going to show how to develop cleaner components.
