@@ -1,8 +1,27 @@
 Ports And Adapters
 ==================
 
-include::jsp_tags.asciidoc[]
+Ports and Adapters is a software architecture coined by Alistar Cockburn and used in the Growing Object Oriented Software Guided by tests written by Steve Freeman and Nat Pryce.
+
+I'm am going to make extensive use of this pattern to make the CQ solution decoupled from the underlying platform which has the benefits of speeding up development, creating a fully testable solution.
+
+How does it work
+================
+
+As we are using Java as the programming language, we are going to use interfaces heavily to hide the underlying implementation from our core system and then create adapters for CQ to provide concrete implementations.
+
+NOTE: Include Image
 
 include::html.asciidoc[]
+
+HTML
+====
+There is a conception that since the views in CQ are jsp's it is ok to mix the view with business logic, this is *no* and should be avoided, the view should use contain the html and JSTL tags there should be no scriplets, there definitly should be no inline Java, and there should be no calls to any CQ objects, functions, using Ports and Adapters design I will show how this can be accomplised.
+
+[code,jsp]
+----------
+git code commit 25a195c
+----------
+include::jsp_tags.asciidoc[]
 
 include::javascript.asciidoc[]
