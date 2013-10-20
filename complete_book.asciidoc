@@ -1,0 +1,16 @@
+CQ Development and Architecture
+===============================
+Stephen Smithstone
+:doctype: book
+:source-highlighter: pygments
+
+
+[preface]
+Example Preface
+===============
+Some preface text yet to be decided
+
+include::installation_part.asciidoc[]
+
+include::simple_site_part.asciidoc[]
+

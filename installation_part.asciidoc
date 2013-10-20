@@ -1,0 +1,19 @@
+Installation
+============
+[partintro]
+.Optional part introduction title
+--
+In this chapter we are going to learn how to configure CQ from the quickstart aspect as well as the deployed war to container aspect
+--
+
+Quickstart
+----------
+CQ is available as an executable jar known as http://adobe.com[quickstart].
+
+Container Deployment
+--------------------
+CQ5.5 is available as a war distribution which you can configure inside of j2ee container environment.
+
+We will be running it inside of http://tomcat.apache.org/download-60.cgi[tomcat 6], you can try and follow along and deploy to
+either http://tomcat.apache.org/download-70.cgi[tomcat 7] or http://tomcat.apache.org/download-80.cgi[tomcat 8]
+
