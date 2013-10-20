@@ -1,0 +1,128 @@
+Learning Asciidoc
+=================
+Stephen Smithstone
+:doctype: book
+
+
+include::installation_part.asciidoc[]
+
+include::simple_site_part.asciidoc[]
+
+Advanced Site
+=============
+[partintro]
+--
+Part introduction here
+--
+
+Page Template Extension
+-----------------------
+Text
+
+Component Extension
+-------------------
+Text
+
+
+
+Best Practices
+==============
+[partintro]
+--
+Part introduction here
+--
+
+Ports And Adapters
+------------------
+Text
+
+
+HTML / JSP
+----------
+Text
+
+Mixed Html / View Logic
+~~~~~~~~~~~~~~~~~~~~~~~
+Text
+
+Clean Html / JSTL Functions And Beans
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Text
+
+
+JSP Tags
+--------
+Text
+
+Tagfile
+~~~~~~~
+Text
+
+Taglib
+~~~~~~
+Text
+
+
+Javascript
+----------
+Text
+
+
+
+Automated Testing
+=================
+[partintro]
+--
+Part introduction here
+--
+
+View Tests
+----------
+Text
+
+Unit Tests
+----------
+Text
+
+OSGI Tests
+----------
+Text
+
+Javascript Tests
+----------------
+Text
+
+Integration Tests
+-----------------
+Text
+
+Specification By Example
+========================
+[partintro]
+--
+Part introduction here
+--
+
+Browser
+-------
+Text
+
+Non Browser
+-----------
+Text
+
+Post Build
+==========
+[partintro]
+--
+Part introduction here
+--
+
+Continous Integration
+---------------------
+Text
+
+Continous Deployment
+--------------------
+Text
+
