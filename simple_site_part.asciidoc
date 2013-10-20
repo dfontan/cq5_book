@@ -25,8 +25,18 @@ We need to setup the maven module so generate the following
 
 
 .pom.xml
-[source,xml,numbered]
+[source,xml]
 ----
 sys::[cd ../tutorial; git checkout master; git show 74ae45e:global-cq-content/pom.xml]
 -
 ----
+<1> TODO
+<2> TODO
+<3> TODO
+<4> TODO
+<5> TODO
+<6> TODO
+<7> TODO
+<8> TODO
+<9> TODO
+
