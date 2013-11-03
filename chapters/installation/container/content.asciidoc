@@ -1,0 +1,37 @@
+Container Deployment
+--------------------
+
+CQ5.5 is available as a war distribution which you can configure inside of j2ee container environment.
+
+I will be running it inside of http://tomcat.apache.org/download-60.cgi[tomcat 6], you can try and follow along and deploy to
+either http://tomcat.apache.org/download-70.cgi[tomcat 7] or http://tomcat.apache.org/download-80.cgi[tomcat 8]
+
+.Project layout
+-----
+sys::[cd cq5_tutorial ; git checkout master; git checkout 305b6 ; tree -a -L 5 cq_deployment_war]
+-----
+
+.cq_deployment_war/pom.xml
+[source,xml]
+-----
+sys::[cd cq5_tutorial ; git checkout master ;git checkout 305b6 ; git show HEAD:cq_deployment_war/pom.xml]
+-----
+
+So i've created a directory *cq_war_deployment* and extracted the contents of the cq war here.
+
+To get tomcat / cq configured we have to modify some settings inside of the web.xml file, I am not going to show how
+to get tomcat configured to use the cq_war_development folder as root webapplication I will leave this as a user
+exercise
+
+Once you have you have extracted the war you need to modify Inside of *web.xml* you should see
+
+.web.xml
+[source,xml]
+---------
+sys::[cd cq5_tutorial ; git checkout master ; git show 305b6:cq_deployment_war/src/main/webapp/WEB-INF/web.xml]
+---------
+<1> We have alter the sling-home init param to point to the deployment path
+
+----
+cq_deployment_war/sling-home
+----

@@ -1,0 +1,11 @@
+Installation
+============
+[partintro]
+.Installation of CQ
+--
+In this chapter we are going to learn how to configure CQ from the quickstart aspect as well as the deployed war to container aspect
+--
+
+include::quickstart/content.asciidoc[]
+
+include::container/content.asciidoc[]

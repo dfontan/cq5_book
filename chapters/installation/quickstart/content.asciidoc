@@ -1,0 +1,20 @@
+Quickstart
+----------
+CQ is available as an executable jar known as http://adobe.com[quickstart].
+
+The quickstart jar allows you to get up and running as quickly as possible without any configuration, you can add configuration by renaming the jar 
+
+Different Port
+--------------
+Change the runtime port number
+
+Runtime
+-------
+Change the runtime mode
+
+VM Option
+---------
+Configure VM options
+
+
+
