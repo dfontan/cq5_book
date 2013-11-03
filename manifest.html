@@ -809,13 +809,13 @@ asciidoc.install(2);
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_quickstart">1.1. Quickstart</h3>
-<div class="paragraph"><p>CQ is available as an executable jar known as <a href="http://adobe.com">quickstart</a></p></div>
+<div class="paragraph"><p>CQ is available as an executable jar known as <a href="http://adobe.com">quickstart</a>.</p></div>
 </div>
 <div class="sect2">
 <h3 id="_java_web_war_deployment">1.2. Java Web War Deployment</h3>
 <div class="paragraph"><p>CQ5.5 is available as a war distribution which you can configure inside of j2ee container environment.</p></div>
 <div class="paragraph"><p>I will be running it inside of <a href="http://tomcat.apache.org/download-60.cgi">tomcat 6</a>, you can try and follow along and deploy to
-<a href="http://tomcat.apache.org/download-70.cgi">tomcat 7</a> or <a href="http://tomcat.apache.org/download-80.cgi">tomcat 8</a></p></div>
+either <a href="http://tomcat.apache.org/download-70.cgi">tomcat 7</a> or <a href="http://tomcat.apache.org/download-80.cgi">tomcat 8</a></p></div>
 <div class="listingblock">
 <div class="title">Project layout</div>
 <div class="content">
@@ -824,13 +824,7 @@ asciidoc.install(2);
 ├── license.properties
 ├── pom.xml
 ├── sling-home
-│   ├── .gitkeep
-│   └── launchpad
-│       └── felix
-│           ├── bundle27
-│           │   └── data
-│           └── bundle40
-│               └── data
+│   └── .gitkeep
 ├── src
 │   └── main
 │       └── webapp
@@ -844,46 +838,30 @@ asciidoc.install(2);
 │           │   └── web.xml
 │           └── some_random.jsp
 └── target
-    └── cq_deployment_war-1.0-SNAPSHOT
-        ├── META-INF
-        │   ├── LICENSE
-        │   ├── MANIFEST.MF
-        │   └── maven
-        │       └── com.day.cq
-        ├── WEB-INF
-        │   ├── classes
-        │   │   ├── com
-        │   │   └── org
-        │   ├── resources
-        │   │   ├── bundles
-        │   │   ├── config
-        │   │   ├── install
-        │   │   └── org.apache.sling.launchpad.base.jar
-        │   └── web.xml
-        └── some_random.jsp
+    ├── cq_deployment_war-1.0-SNAPSHOT
+    │   ├── META-INF
+    │   │   ├── LICENSE
+    │   │   ├── MANIFEST.MF
+    │   │   └── maven
+    │   │       └── com.day.cq
+    │   ├── WEB-INF
+    │   │   ├── classes
+    │   │   │   ├── com
+    │   │   │   └── org
+    │   │   ├── resources
+    │   │   │   ├── bundles
+    │   │   │   ├── config
+    │   │   │   ├── install
+    │   │   │   └── org.apache.sling.launchpad.base.jar
+    │   │   └── web.xml
+    │   └── some_random.jsp
+    └── cq_deployment_war-1.0-SNAPSHOT.war
 
-28 directories, 13 files</code></pre>
+22 directories, 14 files</code></pre>
 </div></div>
 <div class="listingblock">
 <div class="title">cq_deployment_war/pom.xml</div>
-<div class="content"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18</pre></div></td><td class="code"><div class="highlight"><pre><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<div class="content"><div class="highlight"><pre><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
 <span class="nt">&lt;project</span> <span class="na">xmlns=</span><span class="s">&quot;http://maven.apache.org/POM/4.0.0&quot;</span>
          <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
          <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;</span><span class="nt">&gt;</span>
@@ -901,8 +879,7 @@ asciidoc.install(2);
 
 
 <span class="nt">&lt;/project&gt;</span>
-</pre></div>
-</td></tr></table></div></div>
+</pre></div></div></div>
 <div class="paragraph"><p>So i&#8217;ve created a directory <strong>cq_war_deployment</strong> and extracted the contents of the cq war here.</p></div>
 <div class="paragraph"><p>To get tomcat / cq configured we have to modify some settings inside of the web.xml file, I am not going to show how
 to get tomcat configured to use the cq_war_development folder as root webapplication I will leave this as a user
@@ -910,107 +887,7 @@ exercise</p></div>
 <div class="paragraph"><p>Once you have you have extracted the war you need to modify Inside of <strong>web.xml</strong> you should see</p></div>
 <div class="listingblock">
 <div class="title">web.xml</div>
-<div class="content"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
-  2
-  3
-  4
-  5
-  6
-  7
-  8
-  9
- 10
- 11
- 12
- 13
- 14
- 15
- 16
- 17
- 18
- 19
- 20
- 21
- 22
- 23
- 24
- 25
- 26
- 27
- 28
- 29
- 30
- 31
- 32
- 33
- 34
- 35
- 36
- 37
- 38
- 39
- 40
- 41
- 42
- 43
- 44
- 45
- 46
- 47
- 48
- 49
- 50
- 51
- 52
- 53
- 54
- 55
- 56
- 57
- 58
- 59
- 60
- 61
- 62
- 63
- 64
- 65
- 66
- 67
- 68
- 69
- 70
- 71
- 72
- 73
- 74
- 75
- 76
- 77
- 78
- 79
- 80
- 81
- 82
- 83
- 84
- 85
- 86
- 87
- 88
- 89
- 90
- 91
- 92
- 93
- 94
- 95
- 96
- 97
- 98
- 99
-100
-101</pre></div></td><td class="code"><div class="highlight"><pre><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<div class="content"><div class="highlight"><pre><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
 <span class="c">&lt;!--</span>
 <span class="c">/*************************************************************************</span>
 <span class="c"> *</span>
@@ -1111,8 +988,7 @@ exercise</p></div>
     <span class="nt">&lt;/servlet-mapping&gt;</span>
 
 <span class="nt">&lt;/web-app&gt;</span>
-</pre></div>
-</td></tr></table></div></div>
+</pre></div></div></div>
 <div class="colist arabic"><table>
 <tr><td><img src="/usr/local/Cellar/asciidoc/8.6.8/etc/asciidoc/images/icons/callouts/1.png" alt="1" /></td><td>
 We have alter the sling-home init param to point to the deployment path
@@ -1217,16 +1093,19 @@ We have alter the sling-home init param to point to the deployment path
 │           │       └── settings.xml
 │           └── jcr_root
 │               ├── apps
-│               │   └── smithstone
-│               │       ├── components
-│               │       │   └── page
-│               │       │       └── homepage
-│               │       │           ├── .content.xml
-│               │       │           └── homepage.jsp
-│               │       └── templates
-│               │           └── homepage
-│               │               ├── .content.xml
-│               │               └── thumbnail.png
+│               │   ├── smithstone
+│               │   │   ├── components
+│               │   │   │   └── page
+│               │   │   │       └── homepage
+│               │   │   │           ├── .content.xml
+│               │   │   │           └── homepage.jsp
+│               │   │   └── templates
+│               │   │       └── homepage
+│               │   │           ├── .content.xml
+│               │   │           └── thumbnail.png
+│               │   └── ssmithstone
+│               │       └── components
+│               │           └── tags
 │               └── etc
 │                   ├── blueprints
 │                   │   └── smithstone
@@ -1255,7 +1134,9 @@ We have alter the sling-home init param to point to the deployment path
     │       │       │   └── page
     │       │       │       └── homepage
     │       │       │           ├── .content.xml
-    │       │       │           └── homepage.jsp
+    │       │       │           ├── homepage.jsp
+    │       │       │           ├── homepage_body.jsp
+    │       │       │           └── homepage_header.jsp
     │       │       └── templates
     │       │           └── homepage
     │       │               ├── .content.xml
@@ -1273,7 +1154,7 @@ We have alter the sling-home init param to point to the deployment path
     └── maven-archiver
         └── pom.properties
 
-41 directories, 28 files</code></pre>
+44 directories, 30 files</code></pre>
 </div></div>
 <div class="admonitionblock">
 <table><tr>
@@ -1542,16 +1423,19 @@ TODO
         │       └── settings.xml
         └── jcr_root
             ├── apps
-            │   └── smithstone
-            │       ├── components
-            │       │   └── page
-            │       │       └── homepage
-            │       │           ├── .content.xml
-            │       │           └── homepage.jsp
-            │       └── templates
-            │           └── homepage
-            │               ├── .content.xml
-            │               └── thumbnail.png
+            │   ├── smithstone
+            │   │   ├── components
+            │   │   │   └── page
+            │   │   │       └── homepage
+            │   │   │           ├── .content.xml
+            │   │   │           └── homepage.jsp
+            │   │   └── templates
+            │   │       └── homepage
+            │   │           ├── .content.xml
+            │   │           └── thumbnail.png
+            │   └── ssmithstone
+            │       └── components
+            │           └── tags
             └── etc
                 ├── blueprints
                 │   └── smithstone
@@ -1565,7 +1449,7 @@ TODO
                         ├── scripts
                         └── styles
 
-21 directories, 12 files</code></pre>
+24 directories, 12 files</code></pre>
 </div></div>
 <div class="listingblock">
 <div class="content">
@@ -1820,9 +1704,9 @@ nothing in there at the minute.</p></div>
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time: 1.752s
-[INFO] Finished at: Wed Oct 02 08:18:58 BST 2013
-[INFO] Final Memory: 6M/16M
+[INFO] Total time: 1.750s
+[INFO] Finished at: Sun Oct 20 11:46:50 BST 2013
+[INFO] Final Memory: 6M/17M
 [INFO] ------------------------------------------------------------------------</code></pre>
 </div></div>
 <div class="paragraph"><p>To upload the jar to cq run the maven plugin from inside globa-cq-content directory</p></div>
@@ -1903,11 +1787,20 @@ In the upcoming chapters we are going to show how to develop cleaner components.
 </div>
 </div>
 </div>
+<h1 id="_template_extension">Template Extension</h1>
+<div class="paragraph"><p>Component Extension</p></div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre><code></code></pre>
+</div></div>
+</div></div>
 </div>
 <div id="footnotes"><hr /></div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2013-09-15 10:20:15 BST
+Last updated 2013-10-14 22:05:40 BST
 </div>
 </div>
 </body>

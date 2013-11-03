@@ -28,7 +28,6 @@ We need to setup the maven module so generate the following
 [source,xml]
 ----
 sys::[cd ../tutorial; git checkout master; git show 74ae45e:global-cq-content/pom.xml]
--
 ----
 <1> TODO
 <2> TODO
@@ -39,4 +38,23 @@ sys::[cd ../tutorial; git checkout master; git show 74ae45e:global-cq-content/po
 <7> TODO
 <8> TODO
 <9> TODO
+
+Simple Template and Page
+------------------------
+The directory structure we are going to create.
+
+
+.Project structure
+----
+sys::[cd ../tutorial ; git checkout master ; git checkout 74ae45e ; tree -A global-cq-content/src]
+----
+
+----
+sys::[cd ../tutorial ; git checkout master ; git checkout 74ae45e ; tree -a global-cq-content/src/main/resources/META-INF]
+----
+
+----
+sys::[cd ../tutorial ; git checkout master ; git checkout 74ae45e ; tree -a global-cq-content/src/main/resources/jcr_root/apps/smithstone/components/page]
+----
+
 
