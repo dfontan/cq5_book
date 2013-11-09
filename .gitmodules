@@ -1,0 +1,3 @@
+[submodule "cq5_tutorial"]
+	path = cq5_tutorial
+	url = git@github.com:ssmithstone/cq5_tutorial.git
