@@ -1,0 +1,22 @@
+Simple Site
+-----------
+
+Template
+~~~~~~~~
+Coming Soon
+
+Page
+~~~~
+Coming Soon
+
+Javascript
+~~~~~~~~~~
+Coming Soon
+
+Layout
+~~~~~~
+Coming Soon
+
+Style
+~~~~~
+Coming Soon

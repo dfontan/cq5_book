@@ -1,5 +1,5 @@
 Container Deployment
-====================
+--------------------
 
 CQ5.5 is available as a war distribution which you can configure inside of j2ee container environment.
 

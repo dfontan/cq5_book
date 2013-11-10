@@ -1,0 +1,6 @@
+Site Development
+================
+
+include::simple-site/contents.asciidoc[]
+
+include::advanced-site/contents.asciidoc[]
