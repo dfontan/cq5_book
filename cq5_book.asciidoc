@@ -7,3 +7,5 @@ Stephen Smithstone
 include::chapters/installation/introduction.asciidoc[]
 
 include::chapters/site-development/introduction.asciidoc[]
+
+include::chapters/best-practices/introduction.asciidoc[]

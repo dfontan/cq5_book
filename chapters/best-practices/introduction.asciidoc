@@ -1,0 +1,11 @@
+Best Practices
+--------------
+
+include::architecture/contents.asciidoc[]
+
+include::jsp/introduction.asciidoc[]
+
+include::html/introduction.asciidoc[]
+
+include::javascript/introduction.asciidoc[]
+
