@@ -1,5 +1,6 @@
 Site Development
 ================
+In this chapter we are going to cover how to develop templates, pages , javascript, layouts, and style and then deploy
 
 include::simple-site/contents.asciidoc[]
 
