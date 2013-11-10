@@ -1,5 +1,5 @@
 Container Deployment
---------------------
+====================
 
 CQ5.5 is available as a war distribution which you can configure inside of j2ee container environment.
 
@@ -8,14 +8,14 @@ either http://tomcat.apache.org/download-70.cgi[tomcat 7] or http://tomcat.apach
 
 .Project layout
 -----
-sys::[cd cq5_tutorial ; git checkout master; git checkout 305b6 ; tree -a -L 5 cq_deployment_war]
------
+sys::[cd cq5_tutorial ; git checkout master; git checkout 1c78e; tree -a -L 4 cq_deployment_war]
+----
 
 .cq_deployment_war/pom.xml
 [source,xml]
------
-sys::[cd cq5_tutorial ; git checkout master ;git checkout 305b6 ; git show HEAD:cq_deployment_war/pom.xml]
------
+----
+sys::[cd cq5_tutorial ; git checkout master ; git show 1c78e:cq_deployment_war/pom.xml ] 
+----
 
 So i've created a directory *cq_war_deployment* and extracted the contents of the cq war here.
 
@@ -24,14 +24,10 @@ to get tomcat configured to use the cq_war_development folder as root webapplica
 exercise
 
 Once you have you have extracted the war you need to modify Inside of *web.xml* you should see
-
-.web.xml
-[source,xml]
----------
-sys::[cd cq5_tutorial ; git checkout master ; git show 305b6:cq_deployment_war/src/main/webapp/WEB-INF/web.xml]
----------
-<1> We have alter the sling-home init param to point to the deployment path
+a line that mentions the sling.home context paramater the value of which needs to point to a directory where the JCR repository will be created
+something along the lines of 
 
 ----
-cq_deployment_war/sling-home
+/Users/ssmithstone/cq5_book/cq5_tutorial/sling-home
 ----
+is sufficient
