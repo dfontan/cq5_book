@@ -1,5 +1,5 @@
 JSP 
-~~~
+---
 Coming Soon
 
 include::tag-files/contents.asciidoc[]
