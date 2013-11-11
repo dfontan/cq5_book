@@ -1,5 +1,5 @@
-CQ5 Development 
-===============
+CQ5 Development And Best Practices
+==================================
 Stephen Smithstone
 :doctype: book
 :source-highlighter: pygments
