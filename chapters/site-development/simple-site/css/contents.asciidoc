@@ -1,0 +1,16 @@
+Style
+~~~~~
+CSS is like javascript can be inlined in the template or loaded from the /etc/designs/smithstone/style directory 
+
+.Homepage template now with linked stylesheet
+[source,jsp]
+----
+sys::[cd cq5_tutorial/global-cq-content/src/main/resources/jcr_root/apps/smithstone/components/page/homepage; git checkout master ; git show 11cd26a:./homepage.jsp ]
+----
+<1> We have included the css link in the head.
+
+.Simple CSS to reset and set font and background
+[source,css]
+----
+sys::[cd cq5_tutorial/global-cq-content/src/main/resources/jcr_root/etc/designs/smithstone/style; git checkout master ; git show 11cd26a:./main.css ]
+----

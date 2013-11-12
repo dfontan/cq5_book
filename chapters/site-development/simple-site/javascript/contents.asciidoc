@@ -1,0 +1,22 @@
+Javascript
+~~~~~~~~~~
+
+Javascript can be written inline inside of the page templates, or we can load js files from the 
+
+----
+/etc/designs/smithstone/javascript
+----
+directory
+
+[source,jsp]
+----
+sys::[cd cq5_tutorial/global-cq-content/src/main/resources/jcr_root/apps/smithstone/components/page/homepage; git checkout master ; git show 0a32eec:./homepage.jsp ]
+----
+<1> Here we have included a script tag to load the javascript from /etc/designs/smithstone/javascript/main.js.
+<2> Here we use the window onload to execute the javascript.
+[source,javascript]
+----
+sys::[cd cq5_tutorial/global-cq-content/src/main/resources/jcr_root/etc/designs/smithstone/javascript; git checkout master; git show 0a32eec:./main.js]
+----
+And this is a simple javascript file that on page loads displays an alert message box to the user, nothing specical this is just showing how we can use javascript in the page, there are better ways and we will discuss those in best practices.
+

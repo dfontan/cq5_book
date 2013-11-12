@@ -1,86 +1,10 @@
 Simple Site
 -----------
 
-Template
-~~~~~~~~
-A template is a resource that is used for a page, we are going to construct a simple template and use it as the homepage for our site.
-There is very little to a template
+include::layout/contents.asciidoc[]
+include::page/contents.asciidoc[]
+include::javascript/contents.asciidoc[]
+include::css/contents.asciidoc[]
+include::dynamic-pages/introduction.asciidoc[]
 
-----
-sys::[ cd cq5_tutorial/global-cq-content/src/main/resources/jcr_root/apps/smithstone/templates/; git checkout master ; git checkout a251a9; tree -a homepage ]
-----
-
-Below you will see a simple template that is going to be used as the template for the homepage.
-
-.global-cq-content/src/main/resources/jcr_root/apps/smithstone/templates/homepage/.content.xml
-[source,xml]
-----
-sys::[cd cq5_tutorial/global-cq-content/src/main/resources/jcr_root/apps/smithstone/templates/homepage; git checkout master; git show a251a9:./.content.xml ]
-----
-
-All templates should have a resourceType that points to a component this one points to 
-
-----
-smithstone/components/page/homepage
-----
-
-
-Page
-~~~~
-Now we need to create the page component that the template will use
-
-[source,jsp]
-----
-sys::[cd cq5_tutorial/global-cq-content/src/main/resources/jcr_root/apps/smithstone/components/page/homepage; git checkout master ; git show 8c1f3:./homepage.jsp ]
-----
-<1> This line of code is used to set the title with the content loaded from the CQ Page object.
-
-This component includes all the necessary tags from the jstl core and the cq gloal tag which initialises objects on the page context that are needed for CQ development. + 
-In the head we also use
-[source,jsp]
-----
-<cq:include script="/libs/wcm/core/components/init/init.jsp"/>
-----
-This include setups up the jsp for editor mode or publish mode depending on its use.
-This example is full of bad practices and I do not recommend writing code like. + 
-We will see how to create better pages, templates in the upcoming best practices chapter.
-
-Javascript
-~~~~~~~~~~
-
-Javascript can be written inline inside of the page templates, or we can load js files from the 
-
-----
-/etc/designs/smithstone/javascript
-----
-directory
-
-[source,jsp]
-----
-sys::[cd cq5_tutorial/global-cq-content/src/main/resources/jcr_root/apps/smithstone/components/page/homepage; git checkout master ; git show 0a32eec:./homepage.jsp ]
-----
-<1> Here we have included a script tag to load the javascript from /etc/designs/smithstone/javascript/main.js.
-<2> Here we use the window onload to execute the javascript.
-[source,javascript]
-----
-sys::[cd cq5_tutorial/global-cq-content/src/main/resources/jcr_root/etc/designs/smithstone/javascript; git checkout master; git show 0a32eec:./main.js]
-----
-And this is a simple javascript file that on page loads displays an alert message box to the user, nothing specical this is just showing how we can use javascript in the page, there are better ways and we will discuss those in best practices.
-
-Style
-~~~~~
-CSS is like javascript can be inlined in the template or loaded from the /etc/designs/smithstone/style directory 
-
-.Homepage template now with linked stylesheet
-[source,jsp]
-----
-sys::[cd cq5_tutorial/global-cq-content/src/main/resources/jcr_root/apps/smithstone/components/page/homepage; git checkout master ; git show 11cd26a:./homepage.jsp ]
-----
-<1> We have included the css link in the head.
-
-.Simple CSS to reset and set font and background
-[source,css]
-----
-sys::[cd cq5_tutorial/global-cq-content/src/main/resources/jcr_root/etc/designs/smithstone/style; git checkout master ; git show 11cd26a:./main.css ]
-----
 

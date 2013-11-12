@@ -1,0 +1,32 @@
+Dynamic Pages
+~~~~~~~~~~~
+What good would it be if a site was only static content updated manually by humans. In this part we are going to look at the ways to respond to dynamic behaviour like form submissions, dynamic data loaded from a 3rd party solution.
+
+So the recommend way of doing pages that respond to change to use *component_name*.SUBMIT.jsp so we are going to develop an example of processing an form.
+
+.app/smithstone/components/forms/contact_form/contact_form.jsp
+[source,jsp]
+----
+sys::[cd cq5_tutorial/global-cq-content/src/main/resources/jcr_root/apps/smithstone/components/forms/contact_form/; git checkout master ; git show 91c4e:./contact_form.jsp ]
+----
+<1> We include this cq file so we get access to all the cq objects.
+<2> We have used a jsp scriptlet to access the path of the current resource we can use sling mvc to resolve the form handler.
+
+.app/smithstone/components/forms/contact_form/submit.POST.jsp
+[source,jsp]
+----
+sys::[cd cq5_tutorial/global-cq-content/src/main/resources/jcr_root/apps/smithstone/components/forms/contact_form/; git checkout master ; git show 91c4e:./submit.POST.jsp]
+----
+This is a jsp which is used as the form handler, if we were doing things with the form request we would handle the business logic here, we will build an example of this when we come onto services
+
+[source,jsp]
+----
+sys::[cd cq5_tutorial/global-cq-content/src/main/resources/jcr_root/apps/smithstone/components/page/homepage/; git checkout master; git show 91c4e:./homepage.jsp]
+----
+<1> We have modified the template to allow us to add cq components the parsys is the defacto way into CQ to do this.
+
+Summary
+~~~~~~~
+What we are seeing here is how to create a simple dynamic component add it to the page using parsys and handle the processing of the form using a form with the name submit.POST.jsp this is how Apache Sling works inside of CQ.
+Apache Sling is the Web Framework that CQ5 is developed on top
+

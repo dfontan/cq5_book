@@ -1,0 +1,22 @@
+Template
+~~~~~~~~
+A template is a resource that is used for a page, we are going to construct a simple template and use it as the homepage for our site.
+There is very little to a template
+
+----
+sys::[ cd cq5_tutorial/global-cq-content/src/main/resources/jcr_root/apps/smithstone/templates/; git checkout master ; git checkout a251a9; tree -a homepage ]
+----
+
+Below you will see a simple template that is going to be used as the template for the homepage.
+
+.global-cq-content/src/main/resources/jcr_root/apps/smithstone/templates/homepage/.content.xml
+[source,xml]
+----
+sys::[cd cq5_tutorial/global-cq-content/src/main/resources/jcr_root/apps/smithstone/templates/homepage; git checkout master; git show a251a9:./.content.xml ]
+----
+
+All templates should have a resourceType that points to a component this one points to 
+
+----
+smithstone/components/page/homepage
+----
