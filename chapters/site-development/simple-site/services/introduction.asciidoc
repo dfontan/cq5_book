@@ -5,7 +5,7 @@ We are going to look how to interact with the CQ services that are exposed via O
 
 OSGI Description here.
 
-Bulit-in Servers
+Built-in Services
 ----------------
 CQ5 has a few built-in services we can be found on the osgi console from cq admin console.
 We are going to use the CQ mailer services.
@@ -36,3 +36,30 @@ sys::[cd cq5_tutorial/global-cq-content/; git checkout master; git show 16e02f4:
 ----
 <1> We need to adobe package for the mail service.
 <2> We need the commons email which adobe has packaged up for use in CQ.
+
+Custom Classes
+--------------
+We are going to see how to create custom classes, functions that we can deploy and consume from with our CQ application
+
+[source,java]
+----
+sys::[cd cq5_tutorial/global/global-cq-domain/src/main/java/smithstone/components/forms; git checkout master; git show 5465041:./ContactFormHandler.java ]
+----
+
+[source,xml]
+----
+sys::[cd cq5_tutorial/global/global-cq-domain; git checkout master; git show 444b3e9:./pom.xml ]
+----
+
+[source,xml]
+----
+sys::[cd cq5_tutorial/global-cq-content/; git checkout master; git show 444b3e9:./pom.xml ]
+----
+
+[source,jsp]
+----
+sys::[cd cq5_tutorial/global-cq-content/src/main/resources/jcr_root/apps/smithstone/components/forms/contact_form/; git checkout master ; git show 444b3e9:./submit.POST.jsp ]
+----
+<1> Here we import the class from the classpath.
+<2> We now use the class to send the email so we have little java code in the jsp , but this is still bad, we will see how to improve on this in best practices.
+Video/Image of installing the bundle into the osgi console
