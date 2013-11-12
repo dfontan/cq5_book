@@ -1,0 +1,38 @@
+Services
+========
+
+We are going to look how to interact with the CQ services that are exposed via OSGI.
+
+OSGI Description here.
+
+Bulit-in Servers
+----------------
+CQ5 has a few built-in services we can be found on the osgi console from cq admin console.
+We are going to use the CQ mailer services.
+
+.configure email server using gmail as rely
+mail server = smtp.gmail.com +
+port = 465 +
+user = gmail.username@gmail.com +
+password = gmail.password +
+
+.apps/smithstone/components/forms/contact_form/submit.POST.jsp
+[source,jsp]
+----
+sys::[cd cq5_tutorial/global-cq-content/src/main/resources/jcr_root/apps/smithstone/components/forms/contact_form/; git checkout master; git show 16e02f4:./submit.POST.jsp ]
+----
+<1> Obtain the service using the sling exposed object.
+<2> Create a simple email message.
+<3> Create the message from the request parameters and set the email message
+<4> Send the email using the service
+
+This page is fit for use in a production environment if you are decent programmer, you will maybe use a java object to the code like we will in the next section when we create see how we can use our own classes then move onto our own services. 
+
+
+.global-cq-content/pom.xml
+[source,xml]
+----
+sys::[cd cq5_tutorial/global-cq-content/; git checkout master; git show 16e02f4:./pom.xml]
+----
+<1> We need to adobe package for the mail service.
+<2> We need the commons email which adobe has packaged up for use in CQ.

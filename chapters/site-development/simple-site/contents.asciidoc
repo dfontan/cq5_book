@@ -6,5 +6,6 @@ include::page/contents.asciidoc[]
 include::javascript/contents.asciidoc[]
 include::css/contents.asciidoc[]
 include::dynamic-pages/introduction.asciidoc[]
+include::services/introduction.asciidoc[]
 
 
