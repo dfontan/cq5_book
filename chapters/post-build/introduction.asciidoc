@@ -3,9 +3,9 @@ Post Build
 
 Continuous Integration
 ----------------------
-Comming Soon
+Coming Soon
 
 Continuous Deployment
 ---------------------
-Comming Soon
+Coming Soon
 
