@@ -63,3 +63,34 @@ sys::[cd cq5_tutorial/global-cq-content/src/main/resources/jcr_root/apps/smithst
 <1> Here we import the class from the classpath.
 <2> We now use the class to send the email so we have little java code in the jsp , but this is still bad, we will see how to improve on this in best practices.
 Video/Image of installing the bundle into the osgi console
+
+Custom Services
+---------------
+Custom services osgi registered services, so here ware going to develop a simple bundle that exposes the current date time and place it on the homepage template, we will do the bad thing of using java code inside of jsps then modify that to use a custom class that calls the service like we did with the ContactFormHandler before.
+
+[source,jsp]
+----
+sys::[cd cq5_tutorial/global-cq-content/src/main/resources/jcr_root/apps/smithstone/components/page/homepage/; git checkout master ; git show dfa8790:./homepage.jsp ]
+----
+
+[source,xml]
+----
+sys::[cd cq5_tutorial/global/global-domain/; git checkout master ; git show dfa8790:./pom.xml]
+----
+
+[source,java]
+----
+sys::[cd cq5_tutorial/global/global-domain/src/main/java/smithstone/osgi/ext/; git checkout master; git show dfa8790:./DateTimeServiceActivator.java]
+----
+
+[source,java]
+----
+sys::[cd cq5_tutorial/global/global-domain/src/main/java/smithstone/services/; git checkout master ; git show dfa8790:./DateTime.java ]
+----
+
+[source,java]
+----
+sys::[cd cq5_tutorial/global/global-domain/src/main/java/smithstone/services/; git checkout master; git show dfa8790:./DateTimeService.java]
+----
+
+
