@@ -93,4 +93,19 @@ sys::[cd cq5_tutorial/global/global-domain/src/main/java/smithstone/services/; g
 sys::[cd cq5_tutorial/global/global-domain/src/main/java/smithstone/services/; git checkout master; git show dfa8790:./DateTimeService.java]
 ----
 
+Lets improve on the jsp and move the service code behind a class and inject that into the page
+
+[source,jsp]
+----
+sys::[cd cq5_tutorial/global-cq-content/src/main/resources/jcr_root/apps/smithstone/components/page/homepage; git checkout master ; git show e0c83a:./homepage.jsp]
+----
+[source,xml]
+----
+sys::[cd cq5_tutorial/global/global-cq-domain/; git checkout master ; git show e0c83a:./pom.xml ]
+----
+[source,java]
+----
+sys::[cd cq5_tutorial/global/global-cq-domain/src/main/java/smithstone/cq/domain/; git checkout master; git show e0c83a:./DateTime.java]
+----
+
 
