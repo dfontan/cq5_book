@@ -1,3 +1,19 @@
 Tag Files
 ~~~~~~~~~
-Coming Soon
+Since version 5.5, CQ has support Jsp tag files, these are little snippets of html that can be reused in other pages, they have attributes available on them so they become dynamic.
+
+
+[source,jsp]
+----
+sys::[ cd cq5_tutorial/global-cq-content/src/main/resources/jcr_root/apps/smithstone/components/tags/; git checkout master; git show f239e49:./datetime.tag]
+----
+Here we have reimplemented the date time code and place it into a reusable tag file passing in the sling attribute, this makes this bit of code reusable so follows the DRY principle.
+
+[source,jsp]
+----
+sys::[cd cq5_tutorial/global-cq-content/src/main/resources/jcr_root/apps/smithstone/components/page/homepage/; git checkout master ; git show f239e49:./homepage.jsp]
+----
+
+Now we have moved the date time into the tag we need to reference the tag using the JSP tag declartive and then adding it to the page, passing in the sling object to the tag.
+
+

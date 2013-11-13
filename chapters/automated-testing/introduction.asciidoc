@@ -1,6 +1,6 @@
 Automated Testing
 =================
-Comming Soon
+Coming Soon
 
 View Tests
 ----------
@@ -8,28 +8,28 @@ Coming Soon
 
 Javascript Tests
 ----------------
-Comming Soon
+Coming Soon
 
 OSGI Tests
 ----------
-Comming Soon
+Coming Soon
 
 Unit Tests
 ----------
-Comming Soon
+Coming Soon
 
 Integration Tests
 -----------------
-Comming Soon
+Coming Soon
 
 Specification By Example
 ------------------------
-Comming Soon
+Coming Soon
 
 Selenium
 ~~~~~~~~
-Comming Soon
+Coming Soon
 
 None Browser
 ~~~~~~~~~~~~
-Comming Soon
+Coming Soon

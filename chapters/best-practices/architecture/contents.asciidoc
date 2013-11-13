@@ -1,3 +1,6 @@
 Ports And Adapters
 ------------------
-Coming Soon
+Ports and Adapters or Hexagonal Architecture is a way to create a system that is decoupled from the under lying solution, so in a CQ solution you have very little CQ/Day imports in your views, domain, services and you would use adapters to plugin the application to the platform.
+
+Ports are interfaces. 
+Adapters are classes.

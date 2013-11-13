@@ -1,6 +1,50 @@
 JSP 
 ---
-Coming Soon
+
+So how do we use ports and adapters to in the view, well we use the basics of JSP development , JSTL and HTML , we want to use as little JSTL as possible so we can have clean HTML and we can change the behaviour of the view using code which can be tested using Junit so we don't have to start up a selenium test or manually test it in a browser.
+
+Lets revisit the contact form that we made previously and change this to use ports and adapters, we will modify it a bit first to use labels that are configured in the CMS which will show how properties are used and then we will clean this up to make it great.
+
+[source,jsp]
+----
+sys::[cd cq5_tutorial/global-cq-content/src/main/resources/jcr_root/apps/smithstone/components/forms/contact_form/; git checkout master ; git show 33ff13d:./contact_form.jsp ]
+----
+
+[source,jsp]
+----
+sys::[ cd cq5_tutorial/global-cq-content/src/main/resources/jcr_root/apps/smithstone/components/forms/contact_form/; git checkout master ; git show 5a666a3:./contact_form.jsp]
+----
+
+
+[source,jsp]
+----
+sys::[ cd cq5_tutorial/global-cq-content/src/main/resources/jcr_root/apps/smithstone/components/forms/contact_form/; git checkout master ; git show 5a666a3:./form.jsp]
+----
+
+[source,java]
+----
+sys::[ cd cq5_tutorial/global/global-cq-domain/src/main/java/smithstone/components/forms/adapter/; git checkout master ; git show 5a666a3:./CQContactFormModel.java ]
+----
+
+[source,java]
+----
+sys::[cd cq5_tutorial/global/global-cq-domain/src/main/java/smithstone/components/forms/adapter/; git checkout master ; git show 5a666a3:./CQContactFormView.java]
+----
+
+[source,java]
+----
+sys::[cd cq5_tutorial/global/global-domain/src/main/java/smithstone/forms/; git checkout master; git show 5a666a3:./ContactForm.java]
+----
+
+[source,java]
+----
+sys::[cd cq5_tutorial/global/global-domain/src/main/java/smithstone/forms/ports/; git checkout master; git show 5a666a3:./ContactModel.java]
+----
+
+[source,java]
+----
+sys::[cd cq5_tutorial/global/global-domain/src/main/java/smithstone/forms/ports/; git checkout master; git show 5a666a3:./ContactView.java]
+----
 
 include::tag-files/contents.asciidoc[]
 
