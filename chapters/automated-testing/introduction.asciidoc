@@ -29,6 +29,91 @@ sys::[cd cq5_tutorial/global/global-views/src/main/webapp/fixtures/components/fo
 sys::[cd cq5_tutorial/global/global-views/src/test/java/smithstone/components/form/; git checkout master; git show a854c58:./ContactFormTest.java]
 ----
 
+What we have done here to create a fake implementation of the model and view and create them on the jsp and use the jsp useBean tag to create the form, we have steped away from the best implementation to show how to create a view test and in doing so duplicated the effort of creating necessary beans and allowed for the code to become factured.
+We will no see how to make this better using factories that are controlled by the classpath, which introduces global objects which is considered bad practice, but I don't want to introduce any unnecessary dependencies like , spring , google guice just yet.
+
+[source,jsp]
+----
+sys::[cd cq5_tutorial/global-cq-content/src/main/resources/jcr_root/apps/smithstone/components/forms/contact_form/; git checkout master; git show 63f9f8a:./contact_form.jsp]
+----
+
+[source,jsp]
+----
+sys::[cd cq5_tutorial/global-cq-content/src/main/resources/jcr_root/apps/smithstone/components/forms/contact_form/; git checkout master; git show 63f9f8a:./form.jsp]
+----
+
+[source,jsp]
+----
+sys::[cd cq5_tutorial/global-cq-content/src/main/resources/jcr_root/apps/smithstone/components/page/homepage/; git checkout master; git show 63f9f8a:./homepage.jsp]
+----
+
+
+[source,xml]
+----
+sys::[cd cq5_tutorial/global/global-cq-web-factories/; git checkout master; git show 63f9f8a:./pom.xml]
+----
+
+
+[source,xml]
+----
+sys::[cd cq5_tutorial/global/global-cq-web/; git checkout master; git show 63f9f8a:./pom.xml]
+----
+
+[source,java]
+----
+sys::[cd cq5_tutorial/global/global-cq-web/src/main/java/smithstone/cq/global/web/; git checkout master; git show 63f9f8a:./ContactFormFactoryTag.java]
+----
+
+[source,java]
+----
+sys::[cd cq5_tutorial/global/global-views/src/main/java/smithstone/global/factories/; git checkout master; git show 63f9f8a:./ContactFormFactory.java]
+----
+
+
+[source,xml]
+----
+sys::[cd cq5_tutorial/global/global-views/src/main/webapp/WEB-INF/; git checkout master; git show 63f9f8a:./web.xml]
+----
+
+[source,jsp]
+----
+sys::[cd cq5_tutorial/global/global-views/src/main/webapp/fixtures/components/forms/contact_form/; git checkout master; git show 63f9f8a:./form_test.jsp]
+----
+
+[source,java]
+----
+sys::[cd cq5_tutorial/global/global-views/src/test/java/smithstone/components/form/; git checkout master; git show 63f9f8a:./ContactFormTest.java]
+----
+
+
+[source,xml]
+----
+sys::[cd cq5_tutorial/global/global-web-factories/; git checkout master; git show 63f9f8a:./pom.xml]
+----
+
+
+[source,java]
+----
+sys::[cd cq5_tutorial/global/global-web-factories/src/main/java/smithstone/global/factories/; git checkout master; git show 63f9f8a:./ContactFormFactory.java]
+----
+
+
+[source,xml]
+----
+sys::[cd cq5_tutorial/global/global-web/; git checkout master; git show 63f9f8a:./pom.xml]
+----
+
+[source,xml]
+----
+sys::[cd cq5_tutorial/global/global-web/src/main/resources/META-INF/; git checkout master; git show 63f9f8a:./globalweb.tld]
+----
+
+[source,xml]
+----
+sys::[cd cq5_tutorial/global/; git checkout master; git show 63f9f8a:./pom.xml]
+----
+
+What we have here to create an abstract factory in a couple of modules a fake one and a cq one both have the same structure and class name this is so osgi can resolve the class when we deploy the tag without a implemenation of the factory, then when the class is requested the class loader will return an instance of the factory that is available on the classpath.
 
 Javascript Tests
 ----------------
