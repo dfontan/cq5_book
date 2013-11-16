@@ -1,3 +1,13 @@
 HTML
 ----
-Coming Soon
+So far we have seen how to create CQ components using a mixture of tag libs and tag files so that creation of javacode is abstracted away from the view. However there are occasions where we need to need to conditional flow in the view and we tend to see view code that is full of core jstl tags.
+
+This is bad for a number of ways , it fills the view up with business logic and to a non jsp coder it makes it difficult to understand what is going on, and also new jsp developers can get confused figuring out the view.
+
+So how do we do this, we move all the logically flow into tags, there are a number of good reasons to do this.
+
+* view just contains xhtml tags
+* code in the tag can be tested without starting up the view container
+* the logic of the view can be modified without touching the view
+
+NOTE: Need example of this.

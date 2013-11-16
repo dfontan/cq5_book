@@ -1,3 +1,19 @@
 Tag Libs
 ~~~~~~~~
-Coming Soon
+
+[source,java]
+----
+sys::[cd cq5_tutorial/global/global-cq-web/src/main/java/smithstone/cq/global/web/; git checkout master ; git show c67a684:./ContactFormFactoryTag.java]
+----
+
+
+[source,xml]
+----
+sys::[cd cq5_tutorial/global/global-cq-web/src/main/resources/META-INF/; git checkout master; git show c67a684:./globalcqweb.tld]
+----
+
+[source,jsp]
+----
+sys::[cd cq5_tutorial/global-cq-content/src/main/resources/jcr_root/apps/smithstone/components/forms/contact_form/; git checkout master; git show c67a684:./contact_form.jsp]
+----
+
