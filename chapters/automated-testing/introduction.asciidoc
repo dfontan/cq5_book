@@ -1,10 +1,34 @@
 Automated Testing
 =================
-Coming Soon
+We are going to see how we can use techniques like TDD to write tests and code that can catch errors before going into production.
 
 View Tests
 ----------
-Coming Soon
+The most important part of a web application is the view, this is what customers look like, how can you not afford to invest time into writing view tests, doing so will bring down the manually testing aspect and allow for faster feedback when creating modifying the components.
+
+So how do we going about this, we have seen that when we first get start creating components we use all the CQ availble page objects to interactive with the CMS, then we looked how to remove this and hide it into java classes and move the construction of the beans into tag libraries, we also split the component up into cq component code and pure html/jstl code this is going to allow us to use the non cq code outside into a jee container for testing.
+
+We need to setup a container to run our views in and a webapp.
+We going to use jetty for the container and configure it to map the non cq components to its context, and use jsoup to connect o the server and junit to test the views. 
+They say you shouldn't touch the network for a unit test, but as this is only localhost and you can disable the network to run it I think this is ok for jsp view tests, as if you wanted to use code its a lot of effort.
+
+[source,java]
+----
+sys::[cd cq5_tutorial/global/global-views/src/main/java/smithstone/components/forms/; git checkout master ; git show a854c58:./FakeContactFormModel.java]
+----
+[source,java]
+----
+sys::[cd cq5_tutorial/global/global-views/src/main/java/smithstone/components/forms/; git checkout master; git show a854c58:./FakeContactFormView.java]
+----
+[source,jsp]
+----
+sys::[cd cq5_tutorial/global/global-views/src/main/webapp/fixtures/components/forms/contact_form/; git checkout master ; git show a854c58:./form_test.jsp]
+----
+[source,java]
+----
+sys::[cd cq5_tutorial/global/global-views/src/test/java/smithstone/components/form/; git checkout master; git show a854c58:./ContactFormTest.java]
+----
+
 
 Javascript Tests
 ----------------
