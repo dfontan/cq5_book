@@ -53,6 +53,10 @@ sys::[cd cq5_tutorial/global-cq-content/src/main/resources/jcr_root/apps/smithst
 sys::[cd cq5_tutorial/global/global-cq-web-factories/; git checkout master; git show 63f9f8a:./pom.xml]
 ----
 
+[source,java]
+----
+sys::[cd cq5_tutorial/global/global-cq-web-factories/src/main/java/smithstone/global/factories/; git checkout master ; git show 63f9f8a:./ContactFormFactory.java]
+----
 
 [source,xml]
 ----
