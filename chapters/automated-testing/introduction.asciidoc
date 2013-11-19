@@ -121,7 +121,10 @@ What we have here to create an abstract factory in a couple of modules a fake on
 
 Javascript Tests
 ----------------
-Coming Soon
+
+So how do we go about javascript testing, we would use stub html which would mean duplicate html , which becomes brittle and hard to maintain so we are going to build up on the jsp view tests and build out fixtures that our javascript tests can load and then apply javascript on top of it.
+
+
 
 OSGI Tests
 ----------
